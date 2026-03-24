@@ -153,7 +153,6 @@
                 <p id="display-bot-desc" class="mt-6 text-gray-600 leading-relaxed text-lg mb-10">
                     Halo! Selain menulis di blog, saya juga mengembangkan Bot WhatsApp yang dapat membantu berbagai keperluan Anda. Mulai dari informasi cepat, layanan otomatisasi, hingga fitur interaktif lainnya siap melayani Anda 24/7.
                 </p>
-                <!-- Menambahkan ?text=.menu agar pesan otomatis terisi -->
                 <a href="https://wa.me/628989240628?text=.menu" target="_blank" class="inline-flex items-center gap-3 bg-green-500 text-white px-8 py-4 rounded-full font-bold hover:bg-green-600 transition shadow-lg shadow-green-200 text-lg border-2 border-transparent hover:border-green-400 hover:scale-105 transform">
                     <i class="fab fa-whatsapp text-2xl"></i> Hubungi Bot Sekarang
                 </a>
@@ -188,7 +187,7 @@
             </div>
         </section>
 
-        <!-- Halaman Baca Artikel (Pengganti Pop-up) -->
+        <!-- Halaman Baca Artikel -->
         <section id="baca-artikel" class="page-section py-10 sm:py-20 bg-white flex-grow hidden">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!-- Tombol Kembali -->
@@ -214,7 +213,7 @@
                     </div>
                 </div>
 
-                <!-- Bagian Konten Artikel (prose memastikan tampilan ramah di perangkat mobile) -->
+                <!-- Bagian Konten Artikel -->
                 <div id="baca-body" class="prose prose-sm sm:prose-base lg:prose-lg prose-blue max-w-none text-gray-600 leading-relaxed">
                     <!-- Konten artikel akan dimasukkan ke sini -->
                 </div>
@@ -338,115 +337,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- Modal Admin Dashboard -->
-    <div id="admin-modal" class="fixed inset-0 z-[60] flex items-center justify-center hidden">
-        <div class="absolute inset-0 bg-gray-900 bg-opacity-75 backdrop-blur-sm" id="admin-overlay"></div>
-        
-        <div class="relative bg-white w-full max-w-4xl max-h-[90vh] mx-4 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-            <div class="flex justify-between items-center p-6 border-b border-gray-100">
-                <h2 class="text-2xl font-bold text-dark">Admin Dashboard</h2>
-                <button id="close-admin" class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 flex items-center justify-center transition ml-auto">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-
-            <div class="flex border-b border-gray-100 bg-gray-50 px-6 pt-4">
-                <button id="tab-articles-btn" class="px-4 py-2 font-semibold text-primary border-b-2 border-primary focus:outline-none">Kelola Artikel</button>
-                <button id="tab-settings-btn" class="px-4 py-2 font-semibold text-gray-500 border-b-2 border-transparent hover:text-gray-700 transition focus:outline-none">Pengaturan Teks</button>
-            </div>
-            
-            <div class="p-6 overflow-y-auto flex-grow bg-gray-50" id="admin-body">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="font-semibold text-lg">Kelola Artikel</h3>
-                    <button id="btn-new-article" class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition shadow-md flex items-center gap-2">
-                        <i class="fas fa-plus"></i> Tulis Baru
-                    </button>
-                </div>
-                <div id="admin-articles-list" class="space-y-3">
-                </div>
-            </div>
-
-            <div class="p-6 overflow-y-auto flex-grow bg-white hidden" id="admin-form-container">
-                <h3 id="form-title-label" class="font-semibold text-lg mb-4">Tulis Artikel Baru</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Judul Artikel</label>
-                        <input type="text" id="form-title" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary" placeholder="Masukkan judul...">
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">Kategori</label>
-                            <input type="text" id="form-category" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary" placeholder="Contoh: Teknologi">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1">URL Gambar Thumbnail</label>
-                            <input type="text" id="form-image" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary" placeholder="https://...">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Ringkasan Pendek (Excerpt)</label>
-                        <textarea id="form-excerpt" rows="2" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary" placeholder="Ringkasan singkat untuk halaman depan..."></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Konten Lengkap (Mendukung HTML)</label>
-                        <!-- Toolbar Editor Sederhana -->
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <button type="button" id="btn-format-img" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded border border-gray-300 flex items-center gap-1.5 transition font-medium">
-                                <i class="fas fa-image"></i> Sisipkan Gambar
-                            </button>
-                            <button type="button" id="btn-format-link" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded border border-gray-300 flex items-center gap-1.5 transition font-medium">
-                                <i class="fas fa-link"></i> Link
-                            </button>
-                            <button type="button" id="btn-format-bold" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded border border-gray-300 flex items-center gap-1.5 transition font-medium">
-                                <i class="fas fa-bold"></i> Bold
-                            </button>
-                            <button type="button" id="btn-format-italic" class="text-xs bg-gray-100 hover:bg-gray-200 text-gray-700 px-3 py-1.5 rounded border border-gray-300 flex items-center gap-1.5 transition font-medium">
-                                <i class="fas fa-italic"></i> Italic
-                            </button>
-                        </div>
-                        <textarea id="form-content" rows="12" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary font-mono text-sm" placeholder="<p>Isi artikel di sini...</p>"></textarea>
-                    </div>
-                    <div id="form-error" class="hidden text-red-600 text-sm mt-2"></div>
-                </div>
-                <div class="mt-6 flex gap-3 justify-end">
-                    <button id="btn-cancel-edit" class="px-5 py-2.5 rounded-lg border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition">Batal</button>
-                    <button id="btn-save-article" class="px-5 py-2.5 rounded-lg bg-primary text-white font-medium hover:bg-blue-700 transition shadow-md">Simpan Artikel</button>
-                </div>
-            </div>
-
-            <!-- Pengaturan Teks Website -->
-            <div class="p-6 overflow-y-auto flex-grow bg-white hidden" id="admin-settings-container">
-                <h3 class="font-semibold text-lg mb-4">Pengaturan Teks Website</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Subjudul Hero</label>
-                        <input type="text" id="setting-hero-subtitle" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary" placeholder="Selamat Datang di Blog Saya">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Judul Hero</label>
-                        <input type="text" id="setting-hero-title" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary" placeholder='Halo, Saya <span class="text-primary">Mitrawan</span>'>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Hero</label>
-                        <textarea id="setting-hero-desc" rows="3" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary"></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Tentang Saya</label>
-                        <textarea id="setting-about-desc" rows="4" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary"></textarea>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Bot WA</label>
-                        <textarea id="setting-bot-desc" rows="4" class="w-full border border-gray-300 rounded-lg p-2.5 outline-none focus:ring-2 focus:ring-primary"></textarea>
-                    </div>
-                </div>
-                <div class="mt-6 flex gap-3 justify-end">
-                    <button id="btn-save-settings" class="px-5 py-2.5 rounded-lg bg-primary text-white font-medium hover:bg-blue-700 transition shadow-md">Simpan Pengaturan</button>
-                <div id="modal-body" class="prose prose-blue max-w-none text-gray-600 leading-relaxed space-y-4">
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Modal Login Admin -->
     <div id="login-modal" class="fixed inset-0 z-[70] flex items-center justify-center hidden">
@@ -781,8 +671,44 @@
         window.openArticle = (id) => {
             const article = articles.find(a => a.id === id);
             if(!article) return;
-        btnCloseModal.addEventListener('click', closeArticleModal);
-        modalOverlay.addEventListener('click', closeArticleModal);
+
+            currentArticleContent = article.content.replace(/<[^>]*>?/gm, ''); 
+
+            summaryContainer.classList.add('hidden');
+            summaryContainer.innerHTML = '';
+            btnSummarize.disabled = false;
+            btnSummarize.innerHTML = '<span>✨</span> Ringkas dengan AI';
+
+            document.getElementById('baca-title').innerText = article.title;
+            document.getElementById('baca-date').innerHTML = `<i class="far fa-calendar-alt mr-2"></i>${article.date}`;
+            document.getElementById('baca-category').innerText = article.category;
+            document.getElementById('baca-body').innerHTML = article.content;
+            
+            const bacaImg = document.getElementById('baca-img');
+            if(article.image) {
+                bacaImg.src = article.image;
+                bacaImg.classList.remove('hidden');
+            } else {
+                bacaImg.classList.add('hidden');
+            }
+
+            window.location.hash = '#baca-artikel';
+        };
+
+        btnSummarize.addEventListener('click', async () => {
+            btnSummarize.disabled = true;
+            btnSummarize.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Sedang Meringkas...';
+            summaryContainer.classList.remove('hidden');
+            summaryContainer.innerHTML = '<span class="text-indigo-400">AI sedang membaca artikel ini...</span>';
+
+            const prompt = `Buatkan ringkasan dari artikel blog berikut ke dalam Bahasa Indonesia yang kasual, padat, dan jelas (maksimal 3 kalimat).\n\n${currentArticleContent}`;
+            const summary = await callGeminiAPI(prompt);
+            const formattedSummary = summary.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            
+            summaryContainer.innerHTML = `<strong>✨ Ringkasan Cepat:</strong><br><p class="mt-1">${formattedSummary}</p>`;
+            btnSummarize.innerHTML = '<span>✨</span> Ringkas Ulang';
+            btnSummarize.disabled = false;
+        });
 
         // --- Fitur Bantuan Toolbar Editor (Sisip Gambar, Link, dsb) ---
         function insertTextAtCursor(element, text) {
