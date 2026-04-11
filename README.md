@@ -1,2 +1,0 @@
-# Mitrawan
-Proyek mini web.
